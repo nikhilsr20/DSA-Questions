@@ -1,22 +1,34 @@
-int find (vector<int> &nums,int i,vector<int> &dp){
-    if(i>=nums.size()){
-        return 0;
-    }
-    if(dp[i]!=-1){
-        return dp[i];
-    }
-    int p;
-    int q;
+// int find (vector<int> &nums,int i,vector<int> &dp){
+//     if(i>=nums.size()){
+//         return 0;
+//     }
+//     if(dp[i]!=-1){
+//         return dp[i];
+//     }
+//     int p;
+//     int q;
 
-      p=find(nums,i+2,dp)+nums[i];
-      q = find(nums,i+1,dp);
+//       p=find(nums,i+2,dp)+nums[i];
+//       q = find(nums,i+1,dp);
 
-      return dp[i]=max(p,q);
+//       return dp[i]=max(p,q);
+// }
+
+
+int find(vector<int> &nums,int i,vector<int> &dp){
+    dp[i]=nums[i];
+    dp[i+1]=max(nums[i],nums[i+1]);
+    for(int j=i+2;j<nums.size();j++){
+        int pick=dp[j-2]+nums[j];
+        int notpick=dp[j-1];
+        dp[j]=max(pick,notpick);
+    }
+    return dp[nums.size()-1];
 }
 class Solution {
 public:
     int rob(vector<int>& nums) {
-        // Memoization
+        // tabulation
         if(nums.size()==1){
             return nums[0];
         }
