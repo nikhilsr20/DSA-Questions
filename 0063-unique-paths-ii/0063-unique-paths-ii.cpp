@@ -16,7 +16,7 @@ int find(vector<vector<int>> &g,int i, int j,vector<vector<int>> &dp){
     
         int x=find(g,i+1,j,dp);
         int y=find(g,i,j+1,dp);
-        return dp[i][j]+=(x+y);
+        return dp[i][j]=(x+y);
      
 
     
