@@ -49,6 +49,12 @@ class Solution {
 public:
     int uniquePathsWithObstacles(vector<vector<int>>& g) {
         // Tabulation 
+        if(g.size()==1 && g[0].size()==1 && g[0][0]==0){
+            return 1;
+        }
+         if( g[0][0]==1){
+            return 0;
+        }
        vector<vector<int>> dp(g.size(),vector<int> (g[0].size(),0));
         return find(g,0,0,dp);
        
