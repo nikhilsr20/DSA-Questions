@@ -41,7 +41,7 @@ class Solution {
 public:
     bool hasValidPath(vector<vector<char>>& grid) {
         if(grid[0][0]==')') return false;
-        int x=5001;
+        int x=(grid.size()*grid[0].size())/2+1;
         vector<vector<vector<int>>> dp(grid.size(),vector<vector<int>> (grid[0].size(),vector<int> (x,-1)));
       int count=1;
         return find(grid,0,0,count,dp);
