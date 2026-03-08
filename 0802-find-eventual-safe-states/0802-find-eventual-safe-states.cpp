@@ -17,7 +17,7 @@ public:
        queue<int> a;
        vector<int> ans;
        for(int i=0;i<indegree.size();i++){
-        cout<<"indegree["<<i<<"]"<<"--"<<graph[i].size()<<endl;
+        
         if(indegree[i]==0){
         a.push(i);
           while(!a.empty()){
