@@ -27,6 +27,6 @@ class Solution:
         self.find(self.a,n,s)
         if len(self.a)<k:
             return ""
-        self.a.sort()    
+        # self.a.sort()    
         return self.a[k-1]
         
