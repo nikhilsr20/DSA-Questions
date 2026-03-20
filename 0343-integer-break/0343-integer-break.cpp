@@ -1,4 +1,6 @@
-int find(int &n,int sum,vector<int> &dp){
+int dp[59];
+
+int find(int &n,int sum){
  
 if(sum==n){
   
@@ -12,7 +14,7 @@ int x=INT_MIN;
 
 
     for(int i=1;i<=(n-sum);i++){
-    x=max(find(n,sum+i,dp)*i,x);
+    x=max(find(n,sum+i)*i,x);
 }
 
 
@@ -33,8 +35,9 @@ public:
           if(n==2 ) return 1;
           if(n==3) return 2;
          int sum=0;
-         vector<int> dp(n+2,-1);
-              return find(n,sum,dp);
+        //  vector<int> dp(n+2,-1);
+        memset(dp,-1,sizeof(dp));
+              return find(n,sum);
         
         
     }
