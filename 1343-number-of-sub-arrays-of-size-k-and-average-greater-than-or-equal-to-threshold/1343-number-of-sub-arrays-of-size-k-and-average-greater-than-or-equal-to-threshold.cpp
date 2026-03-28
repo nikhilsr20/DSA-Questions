@@ -19,7 +19,7 @@ public:
              if(sum>=t*k){
                 count++;
              }
-             cout<<sum<<endl;
+             
              
 
 
