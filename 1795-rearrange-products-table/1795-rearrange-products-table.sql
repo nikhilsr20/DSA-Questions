@@ -1,14 +1,10 @@
 -- Write your PostgreSQL query statement below
-
-
-select product_id,'store1' as store , store1 as price from Products Where store1 IS NOT NULL 
-
-UNION ALL
-
-select product_id,'store2' as store , store2 as price from Products Where store2 IS NOT NULL 
-
-
-UNION ALL
-
-select product_id,'store3' as store , store3 as price from Products Where store3 IS NOT NULL 
-;
+SELECT p.product_id, s.store, s.price
+FROM Products p,
+LATERAL (
+    VALUES 
+        ('store1', p.store1),
+        ('store2', p.store2),
+        ('store3', p.store3)
+) AS s(store, price)
+WHERE s.price IS NOT NULL;
