@@ -38,7 +38,7 @@ public:
          for(int i=0;i<s.size();i++){
             int one=s[i].first;
             int zero=s[i].second;
-            cout<<one<<"-"<<zero<<endl;
+ 
              for(int j=0;j<zero;j++){
                  if(mul==0){
                      mul=1;
