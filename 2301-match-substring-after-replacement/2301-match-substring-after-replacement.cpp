@@ -1,56 +1,36 @@
-
-
-
 class Solution {
 public:
     bool matchReplacement(string s, string sub, vector<vector<char>>& mappings) {
-        vector<unordered_map<char,int>> a(128);
-        for(int i=0;i<mappings.size();i++){
-                
-                a[mappings[i][0]][mappings[i][1]]=1;
-           
-        }
-        
-        string p=s.substr(0,sub.size());
-        for(int i=0;i<sub.size();i++){
-                if( p[i]==sub[i] || (p[i]!=sub[i] && a[sub[i]][p[i]]==1)){
-                     if(i==sub.size()-1){
-                         return true;
-                     }
-                }
-                else{
-                    break;
-                }
-            }
-    
-        int j=sub.size();
-        while(j<s.size()){
-            p.erase(p.begin());
-            p=p+s[j];
 
-            for(int i=0;i<sub.size();i++){
-                if( p[i]==sub[i] || (p[i]!=sub[i] && a[sub[i]][p[i]]==1)){
-                     if(i==sub.size()-1){
-                         return true;
-                     }
-                }
-                else{
+        unordered_map<char, unordered_set<char>> mp;
+
+        for(auto &v : mappings){
+            mp[v[0]].insert(v[1]);
+        }
+
+        int n = s.size();
+        int m = sub.size();
+
+        for(int i=0; i+m<=n; i++){
+
+            bool ok = true;
+
+            for(int j=0; j<m; j++){
+
+                char a = sub[j];
+                char b = s[i+j];
+
+                if(a == b) continue;
+
+                if(!mp[a].count(b)){
+                    ok = false;
                     break;
                 }
             }
 
-
-      
-            j++;
+            if(ok) return true;
         }
 
-
-
-        
-
-
-
-               
         return false;
     }
 };
