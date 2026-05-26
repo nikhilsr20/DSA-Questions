@@ -16,7 +16,7 @@ class Solution:
         for i in range(len(nums)-2,-1,-1):
             pmin+=nums[i]
             if nums[i]>nums[i+1]:
-                print(pmin,i)
+                
                 p[i]=pmin
             else:
                 break  
@@ -24,7 +24,7 @@ class Solution:
         for i in range(1,len(nums)):
             if nums[i]>nums[i-1]:
                 qmin+=nums[i]
-                print(qmin)
+                
                 q[i]=qmin
             else:
                 break
