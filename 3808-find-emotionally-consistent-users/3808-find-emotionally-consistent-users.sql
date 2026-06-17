@@ -1,3 +1,4 @@
+-- Write your PostgreSQL query statement below
 WITH temp AS (
     SELECT user_id, COUNT(*) AS total
     FROM reactions
