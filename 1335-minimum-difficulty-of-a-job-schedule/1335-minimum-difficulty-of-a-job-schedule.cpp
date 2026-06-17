@@ -1,4 +1,4 @@
-int find(vector<int> &a,int d,int i,int m,vector<vector<int>> &dp){
+int find(vector<int> &a,int d,int i,int m,vector<vector<vector<int>>> &dp){
     if(d<0) return 1000000;
 
     if(i==a.size()){
@@ -10,8 +10,8 @@ int find(vector<int> &a,int d,int i,int m,vector<vector<int>> &dp){
         return 1000000;
     }
 
-    if(dp[i][d]!=-1){
-        return dp[i][d];
+    if(dp[i][d][m]!=-1){
+        return dp[i][d][m];
     }
 
    
@@ -19,7 +19,7 @@ int find(vector<int> &a,int d,int i,int m,vector<vector<int>> &dp){
     int y=find(a,d-1,i+1,a[i],dp)+m;
 
 
-    return dp[i][d]=min(x,y);
+    return dp[i][d][m]=min(x,y);
     
     
 
@@ -33,7 +33,7 @@ public:
         if(d>a.size()){
             return -1;
         }
-        vector<vector<int>> dp(301,vector<int> (11,-1));
+        vector<vector<vector<int>>> dp(301,vector<vector<int>> (11,vector<int> (1001,-1)));
       
 
         return find(a,d,1,a[0],dp);
