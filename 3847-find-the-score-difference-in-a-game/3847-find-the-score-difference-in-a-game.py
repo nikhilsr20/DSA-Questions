@@ -17,3 +17,4 @@ class Solution:
                 b+=nums[i]
 
         return a-b        
+        
